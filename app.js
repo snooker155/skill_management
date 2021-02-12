@@ -15,6 +15,7 @@ const authRouter = require('./routes/auth');
 const usersRouter = require('./routes/users');
 const processesRouter = require('./routes/processes');
 const tasksRouter = require('./routes/tasks');
+const systemsRouter = require('./routes/systems');
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use(config.api_ver+'/auth', authRouter);
 app.use(config.api_ver+'/users', passport.authenticate('jwt', {session: false}), usersRouter);
 app.use(config.api_ver+'/processes', passport.authenticate('jwt', {session: false}), processesRouter);
 app.use(config.api_ver+'/tasks', passport.authenticate('jwt', {session: false}), tasksRouter);
+app.use(config.api_ver+'/systems', passport.authenticate('jwt', {session: false}), systemsRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
